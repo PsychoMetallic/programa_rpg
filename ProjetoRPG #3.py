@@ -49,6 +49,9 @@ hp = nível * 100
 mana = nível * 75
 reais = nível * 50
 
+#teste
+
+
 print("Hp:", hp,)
 print("Mana:", mana)
 print(f"{amarelo}Dinheiro:", reais)
