@@ -6,6 +6,8 @@ verde = "\033[32m"
 amarelo = "\033[33m"
 roxo = "\033[35m"
 vermelho = "\033[31m"
+ciano = "\033[36m"
+
 
 print("-"*150)
 nome=input("Qual é o Seu Nome? ")
@@ -50,7 +52,7 @@ mana = nível * 75
 reais = nível * 50
 
 print("Hp:", hp,)
-print("Mana:", mana)
+print(f"{ciano}Mana:", mana)
 print(f"{amarelo}Dinheiro:", reais)
 print(f"{branco}-"*150)
 
@@ -122,7 +124,7 @@ if nível < 30:
 
 else:
     while bosshp > 0:
-        print("A Vida dele está em:", bosshp)
+        print(f"A Vida dele está em: {roxo}{bosshp}{branco}")
         print()
 
         luta = input("Oque Você Fará? 1-Atacar / 2-Fugir / 3-Magia / 4-Bomba: ")
@@ -182,20 +184,20 @@ else:
         elif luta == "3":
             sorte = random.randint(1, 100)
             
-            if sorte <= 50:
+            if sorte <= 20:
                 print()
                 print("Você usou a Magia Errada!!!")
                 print()
                 print("-"*150)
                 
-            elif sorte >=51:
+            elif sorte >=21:
 
                 mg = random.randint(1, 100)
 
                 if mg >= 90 and mana >= 1000:
                     print()
                     print("Você Esmagou o Crânio Dele!")
-                    print("Causando 10000 de Dano e Gastando 1000 de Mana!")
+                    print(f"Causando 10000 de Dano e Gastando {ciano}1000 de Mana!")
                     print()
                     dano = 10000
                     bosshp = bosshp - dano
@@ -203,12 +205,12 @@ else:
                     mana = mana - gasto
                     print("Mana Restante:", mana)
                     print()
-                    print("-"*150)
+                    print(f"{branco}-"*150)
 
                 elif mg >= 60 and mana >= 700:
                     print()
                     print("Você Prensou ele com Duas Pedras!")
-                    print("Causando 1500 de Dano e Gastando 700 de Mana!")
+                    print(f"Causando 1500 de Dano e Gastando {ciano}700 de Mana!")
                     print()
                     dano = 1500
                     bosshp = bosshp - dano
@@ -216,12 +218,12 @@ else:
                     mana = mana - gasto
                     print("Mana Restante:", mana)
                     print()
-                    print("-"*150)
+                    print(f"{branco}-"*150)
 
                 elif mg >= 30 and mana >= 550:
                     print()
                     print("Você Lançou uma Bola de Fogo nele!")
-                    print("Causando 1000 de Dano e Gastando 550 de Mana!")
+                    print(f"Causando 1000 de Dano e Gastando {ciano}550 de Mana!")
                     print()
                     dano = 1000
                     bosshp = bosshp - dano
@@ -229,12 +231,12 @@ else:
                     mana = mana - gasto
                     print("Mana Restante:", mana)
                     print()
-                    print("-"*150)
+                    print(f"{branco}-"*150)
 
                 elif mg >= 1 and mana >= 400:
                     print()
                     print("Você Conseguiu Criar um Boneco feito com os Escombros para Atacá-lo! mas o Efeito acabou Rápido e seu Boneco foi Destruído!")
-                    print("Mas Causou 600 de Dano e Gastou 400 de Mana!")
+                    print(f"Mas Causou 600 de Dano e Gastou {ciano}400 de Mana!")
                     print()
                     dano = 600
                     bosshp = bosshp - dano
@@ -242,16 +244,18 @@ else:
                     mana = mana - gasto
                     print("Mana Restante:", mana)
                     print()
-                    print("-"*150)
+                    print(f"{branco}-"*150)
 
                 else:
                     print()
-                    print("Mana Insuficiente!")
+                    print(f"{ciano}Mana {branco}Insuficiente!")
                     print()
                     print("-"*150)
 
             elif sorte >=51 and mana <= 199:
-                    print("Mana Insuficiente!")
+                    print()
+                    print(f"{ciano}Mana {branco}Insuficiente!")
+                    print()
                     print("-"*150)
 
         elif luta == "2":
@@ -339,7 +343,7 @@ else:
         print(f"O {roxo}Dragão {branco}está Morto, Você salvou o Vilarejo!!!")
         print()
 
-        povo = input(f"{verde}Povo do Vilarejo:{branco} MUITO OBRIGADO {nome.upper()} VOCÊ NOS SALVOU, PEGUE ISSO COMO RECOMPENSA: ")
+        povo = input(f"{verde}Povo do Vilarejo:{branco} MUITO OBRIGADO {verde}{nome.upper()}{branco} VOCÊ NOS SALVOU, PEGUE ISSO COMO RECOMPENSA: ")
         
         win = 10000
         reais += win
