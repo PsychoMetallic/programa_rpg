@@ -1,6 +1,6 @@
-# Início de Tudo
-
 import random
+
+# Cores do Terminal
 
 azul = "\033[34m"
 branco = "\033[37m"
@@ -8,6 +8,7 @@ verde = "\033[32m"
 amarelo = "\033[33m"
 roxo = "\033[35m"
 vermelho = "\033[31m"
+verde1 = "\033[92m"
 
 # Informações Iniciais
 
@@ -50,12 +51,12 @@ print("Esses são seus atributos!: ")
 print("-"*150)
 
 hp = nível * 50
-mana = nível * 25
+mana = nível * 75
 reais = nível * 100
 
-print("Hp:", hp,)
-print("Mana:", mana)
-print(f"{amarelo}Dinheiro:", reais)
+print(f"{azul}Hp: {hp}")
+print(f"{verde1}Mana: {mana}")
+print(f"{amarelo}Dinheiro: {reais}")
 print(f"{branco}-"*150)
 
 # Loja da Guilda
@@ -121,7 +122,8 @@ elif classe == "arqueiro":
     print("Flechas Comuns")
 print("-"*150)
 
-# Batalha contra o Dragão
+# Treinamento de 3 Anos
+
 import time
 train = 3
 for i in range(3):
@@ -136,18 +138,19 @@ for i in range(3):
     print("-"*150)
 
     hp = nível * 50
-    mana = nível * 25
-    reais = nível * 100
+    mana = nível * 75
 
-    print("Hp:", hp,)
-    print("Mana:", mana)
-    print(f"{amarelo}Dinheiro:", reais)
+    print(f"{azul}Hp: {hp}")
+    print(f"{verde1}Mana: {mana}")
+    print(f"{amarelo}Dinheiro: {reais}")
     print(f"{branco}-"*150)
 
     print("Quando Volta para o seu Vilarejo, percebe que Ele está sob Ataque!!!")
     print("-"*150)
     time.sleep(2)
     break
+
+# Batalha contra o Dragão
 
 bosshp = nível * 100
 print(f"Oh Não, Apareceu um {roxo}Dragão {branco}e Ele está Atacando o Vilarejo!")
@@ -192,7 +195,7 @@ while bosshp > 0:
                 bosshp = bosshp - dano
                 print()
                 print("Você Cortou a Barriga dele! o Corte foi Profundo!!!")
-                print(f"Causando {dano} de Dano!")
+                print(f"Causando {roxo}{dano}{branco} de Dano!")
                 print()
                 print("-"*150)
                     
@@ -201,7 +204,7 @@ while bosshp > 0:
                 bosshp = bosshp - dano
                 print()
                 print("Você deu um Superpulo e Desferiu Vários Cortes em sequência no Rosto dele!")
-                print(f"Causando {dano} de Dano!")
+                print(f"Causando {roxo}{dano}{branco} de Dano!")
                 print()
                 print("-"*150)
                         
@@ -210,7 +213,7 @@ while bosshp > 0:
                 bosshp = bosshp - dano
                 print()
                 print("Você Desferiu um corte na Perna dele!")
-                print(f"Causando {dano} de Dano!")
+                print(f"Causando {roxo}{dano}{branco} de Dano!")
                 print()
                 print("-"*150)
 
@@ -246,7 +249,7 @@ while bosshp > 0:
                 bosshp = bosshp - dano
                 print()
                 print("Você atirou uma Flecha na Barriga dele! e ela entrou muito fundo!!!")
-                print(f"Causando {dano} de Dano!")
+                print(f"Causando {roxo}{dano}{branco} de Dano!")
                 print()
                 print("-"*150)
                     
@@ -255,7 +258,7 @@ while bosshp > 0:
                 bosshp = bosshp - dano
                 print()
                 print("Você deu um tiro na cabeça dele, mas ele conseguiu desviar, o Tiro Acertou o rosto dele!")
-                print(f"Causando {dano} de Dano!")
+                print(f"Causando {roxo}{dano}{branco} de Dano!")
                 print()
                 print("-"*150)
                         
@@ -264,7 +267,7 @@ while bosshp > 0:
                 bosshp = bosshp - dano
                 print()
                 print("Você atirou uma Flecha na Perna dele!")
-                print(f"Causando {dano} de Dano!")
+                print(f"Causando {roxo}{dano}{branco} de Dano!")
                 print()
                 print("-"*150)
 
@@ -277,27 +280,31 @@ while bosshp > 0:
         print()
         print("Qual Magia Você Quer Usar?")
         magia = input("1-Bola de Fogo / 2-Telecinese / 3-Congelamento: ")
+        print()
+        print("Validando Magia, Aguarde...")
+        time.sleep(1)
+        print("-"*150)
             
-        if sorte <= 30:
+        if sorte <= 10:
             print()
-            print("Você usou a Magia Errada!!!")
+            print("Você Errou!!!")
             print()
             print("-"*150)
                 
-        elif sorte >=31:
+        elif sorte >=11:
             mg = random.randint(1, 100)
 
             if mg >= 90 and mana >= 1000 and magia == "2":
 
                 print()
                 print("Você Esmagou o Crânio Dele!")
-                print("Matando ele na horae Gastando 1000 de Mana!")
+                print(f"Matando ele na hora e Gastando {verde1}1000{branco} de Mana!")
                 print()
                 dano = 10000
                 bosshp = bosshp - dano
                 gasto = 1000
                 mana = mana - gasto
-                print("Mana Restante:", mana)
+                print(f"{verde1}Mana Restante: {mana}{branco}")
                 print()
                 print("-"*150)
 
@@ -306,11 +313,11 @@ while bosshp > 0:
                 bosshp = bosshp - dano
                 print()
                 print("Você Prensou ele com Duas Pedras!")
-                print(f"Causando {dano} de Dano e Gastando 700 de Mana!")
+                print(f"Causando {roxo}{dano}{branco} de Dano e Gastando {verde1}700{branco} de Mana!")
                 print()
                 gasto = 700
                 mana = mana - gasto
-                print("Mana Restante:", mana)
+                print(f"{verde1}Mana Restante: {mana}{branco}")
                 print()
                 print("-"*150)
 
@@ -319,11 +326,11 @@ while bosshp > 0:
                 bosshp = bosshp - dano
                 print()
                 print("Você Lançou uma Bola de Fogo nele!")
-                print(f"Causando {dano} de Dano e Gastando 550 de Mana!")
+                print(f"Causando {roxo}{dano}{branco} de Dano e Gastando {verde1}550{branco} de Mana!")
                 print()
                 gasto = 550
                 mana = mana - gasto
-                print("Mana Restante:", mana)
+                print(f"{verde1}Mana Restante: {mana}{branco}")
                 print()
                 print("-"*150)
 
@@ -332,22 +339,24 @@ while bosshp > 0:
                 bosshp = bosshp - dano
                 print()
                 print(f"Você Congelou ele, mas não foi tão Eficaz, Afinal, Ele é um {roxo}Dragão{branco} de Fogo!!!")
-                print(f"Mas Causou {dano} de Dano e Gastou 400 de Mana!")
+                print(f"Mas Causou {roxo}{dano}{branco} de Dano e Gastou {verde1}400{branco} de Mana!")
                 print()
                 gasto = 400
                 mana = mana - gasto
-                print("Mana Restante:", mana)
+                print(f"{verde1}Mana Restante: {mana}{branco}")
                 print()
                 print("-"*150)
 
             else:
                 print()
-                print("Mana Insuficiente!")
+                print(f"{verde1}Mana{branco} Insuficiente!")
                 print()
                 print("-"*150)
 
         elif sorte >=51 and mana <= 199:
-            print("Mana Insuficiente!")
+            print()
+            print(f"{verde1}Mana{branco} Insuficiente!")
+            print()
             print("-"*150)
 
     elif luta == "3" and classe != "mago":
@@ -412,7 +421,7 @@ while bosshp > 0:
                 bosshp = bosshp - dano
                 print("BOOM!!!")
                 print(f"Na hora que o {roxo}Dragão {branco}Abriu a Boca, Você lançou a Bomba na Garganta Dele!")
-                print(f"Causando {dano} de Dano!")
+                print(f"Causando {roxo}{dano}{branco} de Dano!")
 
                 print("-"*150)
                     
@@ -428,7 +437,7 @@ while bosshp > 0:
                 bosshp = bosshp - dano
                 print("BOOM!!!")
                 print(f"Você lançou a Bomba no {roxo}Dragão{branco}, Machucou Muito!")
-                print(f"Causando {dano} de Dano!")
+                print(f"Causando {roxo}{dano}{branco} de Dano!")
                 print("-"*150)
 
 # Ação Inválida
@@ -457,6 +466,6 @@ if bosshp <= 0:
     print(f"{amarelo}{win} Reais{branco} Adicionados ao Banco")
     print()
 
-    print(f"Seu saldo Agora é: {amarelo}", round(reais, 2))
+    print(f"Seu saldo Agora é:{amarelo}", round(reais, 2), "Reais")
     print()
     print(f"{branco}-"*150)
