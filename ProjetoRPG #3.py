@@ -263,7 +263,7 @@ else:
             
             if sorte <= 60:
                 print()
-                print(f"sua Tentativa de Fuga Falhou o {roxo}Dragão{branco}te Matou!!!")
+                print(f"sua Tentativa de Fuga Falhou o {roxo}Dragão{branco} te Matou!!!")
                 print(f"{vermelho}GAME OVER!{branco}")
                 print()
                 print("-"*150)
