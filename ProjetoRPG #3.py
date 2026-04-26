@@ -61,22 +61,22 @@ print(f"{branco}-"*150)
 
 # Loja da Guilda
 
-pocao = 11.99
+pocao = 50
 
-print(f"{amarelo}Comerciante:{branco} Bem vindo a Loja da Guilda, temos essa Poção que custa R$11.99!")
+print(f"{amarelo}Comerciante:{branco} Bem vindo a Loja da Guilda, temos essa {vermelho}Poção{branco} que custa R${pocao}!")
 loja = input("Você quer Comprar? Y/N: ").strip().lower() in ["sim", "s", "y"]
 print("-"*150)
 
 qtd = 0
 
 if loja:
-    if reais < 11.99:
+    if reais < pocao:
         print(f"{amarelo}Comerciante:{branco} Você não tem {amarelo}Dinheiro{branco} Suficiente!")
         print("-"*150)
           
     
     else:
-        qtd = int(input(f"{amarelo}Comerciante:{branco} Quantas Poções Você Deseja? "))
+        qtd = int(input(f"{amarelo}Comerciante:{branco} Quantas {vermelho}Poções{branco} Você Deseja? "))
         venda = qtd * pocao
         
         print("-"*150)
@@ -94,7 +94,7 @@ if loja:
         elif reais >= venda:
             reais -= venda
             print(f"{amarelo}Comerciante:{branco} São Todas Suas Campeão!")
-            print(qtd, "Poções Adicionadas Ao Inventário")
+            print(f"{amarelo}Comerciante:{branco}{vermelho} {qtd} Poções{branco} Adicionadas Ao Inventário")
             print(f"{amarelo}Comerciante:{branco} Aqui está seu troco:",round(reais, 2))
             print("-"*150)
 
@@ -110,7 +110,7 @@ else:
 # Inventário do Jogador
 
 print("Inventário:")
-print(f"Poção: {qtd}") 
+print(f"{vermelho}Poção: {qtd}{branco}") 
 if classe == "guerreiro":
     print("Espada de Ferro")
 elif classe == "executor":
@@ -127,13 +127,23 @@ print("-"*150)
 import time
 train = 3
 for i in range(3):
-    print("Você Voltou de um Treinamento Árduo que Durou 3 Anos!")
-    if nível <= 74:
-        nível += 25
-    elif nível >= 75 and nível <= 100:
-        nível = 100
-    print("Você Aumentou seu Nível, Agora Você é um Aventureiro de Nível", nível)
+    print(f"Treinando... {train} Anos Restantes")
+    train -= 1
+    time.sleep(1.5)
     print()
+
+if nível == 100:
+    print("Porém, Você já é um Aventureiro Lendário, Não Precisa Treinar!")
+    print("-"*150)
+
+elif nível >= 85:
+    print("Você Virou um Aventureiro Lendário, Agora você é Nível 100 (MÁX)!")
+    print("-"*150)
+
+else:
+    nível += 15
+    print("Durante seu Treinamento, Você Subiu de Nível, Parabéns!!!")
+    print(f"{azul}Novo Nível: {nível}{branco}")
     print("Esses são seus novos atributos!: ")
     print("-"*150)
 
@@ -144,14 +154,12 @@ for i in range(3):
     print(f"{verde1}Mana: {mana}")
     print(f"{amarelo}Dinheiro: {reais}")
     print(f"{branco}-"*150)
-
-    print("Quando Volta para o seu Vilarejo, percebe que Ele está sob Ataque!!!")
-    print("-"*150)
-    time.sleep(2)
-    break
+time.sleep(2)
 
 def ataque_monstro(hp, nível):
     cnt = random.randint(1, 10)
+
+    time.sleep(1.5)
 
     if cnt >= 9:
         print()
@@ -199,7 +207,7 @@ while bosshp > 0 and hp > 0:
 
 # Opções de Luta
 
-    luta = input("Oque Você Fará? 1-Atacar / 2-Fugir / 3-Magia / 4-Bomba: ")
+    luta = input("Oque Você Fará? 1-Atacar / 2-Fugir / 3-Magia / 4-Bomba / 5-Poção: ")
     print()
     print("Validando Ação, Aguarde...")
     time.sleep(1)
@@ -215,6 +223,8 @@ while bosshp > 0 and hp > 0:
             print("Você errou o Ataque!!!")
             print()
             print("-"*150)
+
+            hp = ataque_monstro(hp, nível)
                 
         elif sorte >=21:
             atk = random.randint(1, 100)
@@ -233,7 +243,7 @@ while bosshp > 0 and hp > 0:
                 bosshp = bosshp - dano
                 print()
                 print("Você Cortou a Barriga dele! o Corte foi Profundo!!!")
-                print(f"Causando {roxo}{dano}{branco} de Dano!")
+                print(f"Causando {roxo}{dano} de Dano!{branco}")
                 print()
                 print("-"*150)
 
@@ -244,7 +254,7 @@ while bosshp > 0 and hp > 0:
                 bosshp = bosshp - dano
                 print()
                 print("Você deu um Superpulo e Desferiu Vários Cortes em sequência no Rosto dele!")
-                print(f"Causando {roxo}{dano}{branco} de Dano!")
+                print(f"Causando {roxo}{dano} de Dano!{branco}")
                 print()
                 print("-"*150)
 
@@ -255,7 +265,7 @@ while bosshp > 0 and hp > 0:
                 bosshp = bosshp - dano
                 print()
                 print("Você Desferiu um corte na Perna dele!")
-                print(f"Causando {roxo}{dano}{branco} de Dano!")
+                print(f"Causando {roxo}{dano} de Dano!{branco}")
                 print()
                 print("-"*150)
 
@@ -275,6 +285,8 @@ while bosshp > 0 and hp > 0:
             print("Você errou o Tiro!!!")
             print()
             print("-"*150)
+
+            hp = ataque_monstro(hp, nível)
                 
         elif sorte >=21:
             atk = random.randint(1, 100)
@@ -293,7 +305,7 @@ while bosshp > 0 and hp > 0:
                 bosshp = bosshp - dano
                 print()
                 print("Você atirou uma Flecha na Barriga dele! e ela entrou muito fundo!!!")
-                print(f"Causando {roxo}{dano}{branco} de Dano!")
+                print(f"Causando {roxo}{dano} de Dano!{branco}")
                 print()
                 print("-"*150)
 
@@ -304,7 +316,7 @@ while bosshp > 0 and hp > 0:
                 bosshp = bosshp - dano
                 print()
                 print("Você deu um tiro na cabeça dele, mas ele conseguiu desviar, o Tiro Acertou o rosto dele!")
-                print(f"Causando {roxo}{dano}{branco} de Dano!")
+                print(f"Causando {roxo}{dano} de Dano!{branco}")
                 print()
                 print("-"*150)
 
@@ -315,7 +327,7 @@ while bosshp > 0 and hp > 0:
                 bosshp = bosshp - dano
                 print()
                 print("Você atirou uma Flecha na Perna dele!")
-                print(f"Causando {roxo}{dano}{branco} de Dano!")
+                print(f"Causando {roxo}{dano} de Dano!{branco}")
                 print()
                 print("-"*150)
 
@@ -340,6 +352,8 @@ while bosshp > 0 and hp > 0:
             print("Você Errou!!!")
             print()
             print("-"*150)
+
+            hp = ataque_monstro(hp, nível)
                 
         elif sorte >=11:
             mg = random.randint(1, 100)
@@ -347,26 +361,26 @@ while bosshp > 0 and hp > 0:
             if mg >= 90 and mana >= 1000 and magia == "2":
 
                 print()
-                print("Você Esmagou o Crânio Dele!")
-                print(f"Matando ele na hora e Gastando {verde1}1000{branco} de Mana!")
-                print()
                 dano = 10000
-                bosshp = bosshp - dano
-                gasto = 1000
-                mana = mana - gasto
+                bosshp -= dano
+                gasto = nível * 10
+                mana -= gasto
+                print("Você Esmagou o Crânio Dele!")
+                print(f"Matando ele na hora e Gastando {verde1}{gasto} de Mana!{branco}")
+                print()
                 print(f"{verde1}Mana Restante: {mana}{branco}")
                 print()
                 print("-"*150)
 
             elif mg >= 60 and mana >= 700 and magia == "2":
                 dano = nível * 35
-                bosshp = bosshp - dano
+                bosshp -= dano
+                gasto = nível * 7
+                mana -= gasto
                 print()
                 print("Você Prensou ele com Duas Pedras!")
-                print(f"Causando {roxo}{dano}{branco} de Dano e Gastando {verde1}700{branco} de Mana!")
+                print(f"Causando {roxo}{dano} de Dano!{branco} e Gastando {verde1}{gasto} de Mana!{branco}")
                 print()
-                gasto = 700
-                mana = mana - gasto
                 print(f"{verde1}Mana Restante: {mana}{branco}")
                 print()
                 print("-"*150)
@@ -375,13 +389,13 @@ while bosshp > 0 and hp > 0:
 
             elif mg >= 30 and mana >= 550 and magia == "1":
                 dano = nível * 25
-                bosshp = bosshp - dano
+                bosshp -= dano
+                gasto = nível * 5.5
+                mana -= gasto
                 print()
                 print("Você Lançou uma Bola de Fogo nele!")
-                print(f"Causando {roxo}{dano}{branco} de Dano e Gastando {verde1}550{branco} de Mana!")
+                print(f"Causando {roxo}{dano} de Dano!{branco} e Gastando {verde1}{gasto} de Mana!{branco}")
                 print()
-                gasto = 550
-                mana = mana - gasto
                 print(f"{verde1}Mana Restante: {mana}{branco}")
                 print()
                 print("-"*150)
@@ -390,20 +404,20 @@ while bosshp > 0 and hp > 0:
 
             elif mg >= 1 and mana >= 400 and magia == "3":
                 dano = nível * 10
-                bosshp = bosshp - dano
+                bosshp -= dano
+                gasto = nível * 4
+                mana -= gasto
                 print()
                 print(f"Você Congelou ele, mas não foi tão Eficaz, Afinal, Ele é um {roxo}Dragão{branco} de Fogo!!!")
-                print(f"Mas Causou {roxo}{dano}{branco} de Dano e Gastou {verde1}400{branco} de Mana!")
+                print(f"Mas Causou {roxo}{dano} de Dano!{branco} e Gastou {verde1}{gasto} de Mana!{branco}")
                 print()
-                gasto = 400
-                mana = mana - gasto
                 print(f"{verde1}Mana Restante: {mana}{branco}")
                 print()
                 print("-"*150)
 
                 hp = ataque_monstro(hp, nível)
 
-            else:
+            elif mg >= 1 and mana <= 199:
                 print()
                 print(f"{verde1}Mana{branco} Insuficiente!")
                 print()
@@ -464,7 +478,8 @@ while bosshp > 0 and hp > 0:
             print("Você Errou a Bomba!")
             print("-"*150)
 
-                
+            hp = ataque_monstro(hp, nível)
+       
         elif sorte >=31:
 
             bomb = random.randint(1, 100)
@@ -481,7 +496,7 @@ while bosshp > 0 and hp > 0:
                 bosshp = bosshp - dano
                 print("BOOM!!!")
                 print(f"Na hora que o {roxo}Dragão {branco}Abriu a Boca, Você lançou a Bomba na Garganta Dele!")
-                print(f"Causando {roxo}{dano}{branco} de Dano!")
+                print(f"Causando {roxo}{dano} de Dano!{branco}")
                 print("-"*150)
 
                 hp = ataque_monstro(hp, nível)
@@ -498,10 +513,43 @@ while bosshp > 0 and hp > 0:
                 bosshp = bosshp - dano
                 print("BOOM!!!")
                 print(f"Você lançou a Bomba no {roxo}Dragão{branco}, Machucou Muito!")
-                print(f"Causando {roxo}{dano}{branco} de Dano!")
+                print(f"Causando {roxo}{dano} de Dano!{branco}")
                 print("-"*150)
 
                 hp = ataque_monstro(hp, nível)
+
+# Luta = Poção
+
+    elif luta == "5":
+        hp_max = nível * 50
+
+        if qtd <= 0:
+            print()
+            print("Você Não tem Poções no Inventário!")
+            print()
+            print("-"*150)
+
+            hp = ataque_monstro(hp, nível)
+
+        elif hp >= hp_max:
+            print()
+            print("Sua vida já está cheia! Não precisa usar Poção.")
+            print()
+            print("-"*150)
+
+        else:
+            hp += 300
+
+            if hp > hp_max:
+                hp = hp_max
+
+            qtd -= 1
+            print()
+            print("Você Bebeu uma Poção e Recuperou 300 de Vida!")
+            print(f"{azul}Vida Atual: {hp}{branco}")
+            print(f"{vermelho}Poções Restantes: {qtd}{branco}")
+            print()
+            print("-"*150)
 
 # Ação Inválida
 
@@ -514,8 +562,14 @@ while bosshp > 0 and hp > 0:
         break
 
 # Vitória
-                    
-if bosshp <= 0:
+if bosshp <= 0 and hp <= 0:
+    print()
+    print("O Dragão Morreu mas ele conseguiu Te Matar junto com Ele!")
+    print(f"{vermelho}GAME OVER???{branco}")
+    print()
+    print("-"*150)
+      
+elif bosshp <= 0:
     print()
     print(f"O {roxo}Dragão {branco}está Morto, Você salvou o Vilarejo!!!")
     print()
@@ -536,8 +590,5 @@ elif hp <= 0:
     print()
     print("Você está Morto!!!")
     print(f"{vermelho}GAME OVER!{branco}")
-
-elif bosshp <= 0 and hp <= 0:
     print()
-    print("O Dragão Morreu mas ele conseguiu Te Matar junto com Ele!")
-    print(f"{vermelho}GAME OVER???{branco}")
+    print("-"*150)
