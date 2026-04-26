@@ -87,9 +87,12 @@ if loja:
             print("-"*150)
         
         elif reais < venda:
-            print(f"{amarelo}Comerciante:{branco} Seu {amarelo}Dinheiro{branco} é Insuficiente!")
-            qtd = 0
-            print("-"*150)
+            while reais < venda:
+                print(f"Dinheiro Insuficiente! Tentando Comprar {qtd} Poções, mas Você só tem {reais} Reais!")
+                print()
+                qtd = int(input(f"{amarelo}Comerciante:{branco} Quantas {vermelho}Poções{branco} Você Deseja? "))
+                venda = qtd * pocao
+                print("-"*150)
             
         elif reais >= venda:
             reais -= venda
@@ -562,6 +565,7 @@ while bosshp > 0 and hp > 0:
         break
 
 # Vitória
+
 if bosshp <= 0 and hp <= 0:
     print()
     print("O Dragão Morreu mas ele conseguiu Te Matar junto com Ele!")
