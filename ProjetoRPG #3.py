@@ -1,4 +1,15 @@
 import random
+import time
+
+def tp(texto):
+    for letra in texto:
+        print(letra, end="", flush=True)
+        time.sleep(0.05)
+    print()
+
+def input_tp(texto):
+    tp(texto)
+    return input("> ")
 
 # Cores do Terminal
 
@@ -13,15 +24,15 @@ verde1 = "\033[92m"
 # Informações Iniciais
 
 print("-"*150)
-nome=input("Qual é o Seu Nome? ")
+nome = input_tp("Qual é o Seu Nome? ")
 print("-"*150)
 
-print("Escolha sua Classe, Por Favor!")
+tp("Escolha sua Classe, Por Favor!")
 classe = input("Mago / Executor / Guerreiro / Arqueiro: ").lower()
 print("-"*150)
 
 while classe != "mago" and classe != "executor" and classe != "guerreiro" and classe != "arqueiro":
-    print("Resposta Inválida! Tente Novamente!")
+    type("Resposta Inválida! Tente Novamente!")
     classe = input("Mago / Executor / Guerreiro / Arqueiro: ").lower()
     print("-"*150)
     
