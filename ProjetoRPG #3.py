@@ -1,16 +1,20 @@
 import random
 import time
 
-def tp(texto):
+def print(*args, **kwargs):
+    texto = " ".join(map(str, args))
+
+    if texto.startswith("-") or texto.startswith(f"-"):
+        __builtins__.print(texto, **kwargs)
+        return
+
+    end = kwargs.get("end", "\n")
+
     for letra in texto:
-        print(letra, end="", flush=True)
-        time.sleep(0.05)
-    print()
+        __builtins__.print(letra, end="", flush=True)
+        time.sleep(0.03)
 
-def input_tp(texto):
-    tp(texto)
-    return input("> ")
-
+    __builtins__.print(end=end)
 # Cores do Terminal
 
 azul = "\033[34m"
@@ -24,10 +28,10 @@ verde1 = "\033[92m"
 # Informações Iniciais
 
 print("-"*150)
-nome = input_tp("Qual é o Seu Nome? ")
+nome = input("Qual é o Seu Nome? ")
 print("-"*150)
 
-tp("Escolha sua Classe, Por Favor!")
+print("Escolha sua Classe, Por Favor!")
 classe = input("Mago / Executor / Guerreiro / Arqueiro: ").lower()
 print("-"*150)
 
@@ -67,8 +71,8 @@ reais = nível * 100
 
 print(f"{azul}Hp: {hp}")
 print(f"{verde1}Mana: {mana}")
-print(f"{amarelo}Dinheiro: {reais}")
-print(f"{branco}-"*150)
+print(f"{amarelo}Dinheiro: {reais}{branco}")
+print("-"*150)
 
 # Loja da Guilda
 
@@ -154,7 +158,7 @@ for i in range(3):
     print()
 
 if nível == 100:
-    print("Porém, Você já é um Aventureiro Lendário, Não Precisa Treinar!")
+    print("Você já é um Aventureiro Lendário, Não Precisa Treinar!")
     print("-"*150)
 
 elif nível >= 85:
