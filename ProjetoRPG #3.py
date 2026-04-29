@@ -2,6 +2,7 @@ import random
 import time
 
 def print(*args, **kwargs):
+
     texto = " ".join(map(str, args))
 
     if texto.startswith("-") or texto.startswith(f"-"):
@@ -15,6 +16,7 @@ def print(*args, **kwargs):
         time.sleep(0.03)
 
     __builtins__.print(end=end)
+    
 # Cores do Terminal
 
 azul = "\033[34m"
